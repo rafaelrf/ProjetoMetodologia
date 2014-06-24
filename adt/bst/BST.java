@@ -21,6 +21,7 @@ public interface BST<K extends Comparable<? super K>, V> {
 	 * Searches a key in a BST. The search starts at the root node.If the key does not exist
 	 * the methods returns null. 
 	 */
+	public BSTNode<K, V> search(K key);
 	public K search(K key);
 	
 	/**

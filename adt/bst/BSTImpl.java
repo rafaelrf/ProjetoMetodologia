@@ -154,7 +154,62 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V> {
 		return result;
 	}
 
+	@Override
+	public void remove(K key) {
+		BSTNode<K, V> node = searchAux(key);
+		removeAux(node);
+	}
 	
+	private void removeAux(BSTNode<K,V> node){
+		if (!node.isEmpty()){
+			if (node.getLeft().isEmpty() && node.getRight().isEmpty()){
+				node.setKey(null);
+				node.setValue(null);				
+			} else{				
+				if (!node.getLeft().isEmpty() || !node.getRight().isEmpty()){
+					if (!node.equals(root)){
+						if (node.getParent().getLeft().equals(node)){
+							if (!node.getLeft().isEmpty()){
+								node.parent.left = node.getLeft();
+							} else{
+								node.parent.left = node.getRight();
+							}
+						} else {
+							if (!node.getLeft().isEmpty()){
+								node.parent.right = node.getLeft();
+							} else{
+								node.parent.right = node.getRight();
+							}						
+						}
+					} else{
+						if (!root.getLeft().isEmpty() && root.getRight().isEmpty()){
+							root = root.getLeft();
+							root.setParent(null);
+						} else{
+							if (root.getLeft().isEmpty() && !root.getRight().isEmpty()) {
+								root = root.getRight();
+								root.setParent(null);
+							} else{
+								BSTNode<K, V> sucessor = sucessor(node);
+								node.setKey(sucessor.getKey());
+								node.setValue(sucessor.getValue());
+								removeAux(sucessor);													
+							}
+						}
+					}	
+				} else{
+					if (node.getParent() == null){
+						node.setKey(null);
+						node.setValue(null);
+					}
+					BSTNode<K, V> sucessor = sucessor(node);
+					node.setKey(sucessor.getKey());
+					node.setValue(sucessor.getValue());
+					removeAux(sucessor);					
+				}
+			}
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -219,11 +274,5 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V> {
 			result = 1 + size(node.left) + size(node.right);
 		}
 		return result;
-	}
-
-	@Override
-	public void remove(K key) {
-		// TODO Auto-generated method stub
-		
 	}
 }
