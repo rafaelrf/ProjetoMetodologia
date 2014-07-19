@@ -31,7 +31,7 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
     @Override
     public T search(T element) {
         SingleLinkedListNode<T> aux = head;
-        while (!aux.data.equals(element) && !aux.isNIL()) {
+        while (!aux.isNIL() && !aux.data.equals(element)) {
             aux = aux.next;
         }
         return aux.data;
