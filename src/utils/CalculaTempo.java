@@ -1,6 +1,10 @@
 
 package utils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CalculaTempo.
+ */
 public class CalculaTempo {
 
     /** The millis. */
@@ -22,6 +26,11 @@ public class CalculaTempo {
         return System.nanoTime() - millis;
     }
 
+    /**
+     * Gets the start time.
+     *
+     * @return the start time
+     */
     public long getStartTime() {
         return millis;
     }

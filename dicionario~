@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ $# == 3 ]
+then
+	java -jar -Xmx1024m ProjetoMetodologia.jar $1 $2 $3
+else
+	echo "Deve conter ao menos 3 paramentros, so tinha ($#)  parametros que era $1   , $2  e $3"
+fi

@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DadosAnalisados.
+ */
 public class DadosAnalisados {
 
     /** The file name query. */
@@ -13,12 +17,16 @@ public class DadosAnalisados {
     /** The file name insert. */
     private static String FILE_NAME_INSERT;
 
+    /** The file name memory. */
     private static String FILE_NAME_MEMORY;
 
+    /** The writer query. */
     PrintWriter writerQuery;
 
+    /** The writer insert. */
     PrintWriter writerInsert;
 
+    /** The writer memory. */
     PrintWriter writerMemory;
 
     /**
@@ -63,10 +71,19 @@ public class DadosAnalisados {
         writerQuery.println(word + ", " + String.valueOf(time));
     }
 
+    /**
+     * Write memoria.
+     * 
+     * @param word the word
+     * @param time the time
+     */
     public void writeMemoria(String word, long time) {
         writerMemory.println(word + ", " + String.valueOf(time));
     }
 
+    /**
+     * Close.
+     */
     public void close() {
         writerInsert.close();
         writerQuery.close();
