@@ -3,20 +3,38 @@ package core.linked_list;
 
 import core.avltree.Estrutura;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SingleLinkedList.
+ * 
+ * @param <T> the generic type
+ */
 public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
 
+    /** The tail. */
     protected SingleLinkedListNode<T> head, tail;
 
+    /**
+     * Instantiates a new single linked list.
+     */
     public SingleLinkedList() {
         head = new SingleLinkedListNode<T>();
         tail = new SingleLinkedListNode<T>();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.linked_list.LinkedList#isEmpty()
+     */
     @Override
     public boolean isEmpty() {
         return head.isNIL();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.linked_list.LinkedList#size()
+     */
     @Override
     public int size() {
         int size = 0;
@@ -28,6 +46,10 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
         return size;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.linked_list.LinkedList#search(java.lang.Object)
+     */
     @Override
     public T search(T element) {
         SingleLinkedListNode<T> aux = head;
@@ -37,6 +59,10 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
         return aux.data;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.linked_list.LinkedList#insert(java.lang.Object)
+     */
     @Override
     public void insert(T element) {
         SingleLinkedListNode<T> newNode = new SingleLinkedListNode<T>(element,
@@ -51,6 +77,10 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.linked_list.LinkedList#remove(java.lang.Object)
+     */
     @Override
     public void remove(T element) {
         if (head.data.equals(element)) {
@@ -68,6 +98,10 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
 
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.linked_list.LinkedList#toArray()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public T[] toArray() {
@@ -82,6 +116,10 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
         return array;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.avltree.Estrutura#insert(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public void insert(String word) {
@@ -89,6 +127,10 @@ public class SingleLinkedList<T> implements LinkedList<T>, Estrutura {
 
     }
 
+    /*
+     * (non-Javadoc)
+     * @see core.avltree.Estrutura#search(java.lang.String)
+     */
     @Override
     public boolean search(String word) {
         T buscado = search((T) word);

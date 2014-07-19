@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Main2 is used to simply run without passing args on terminal.
  */
@@ -21,22 +22,25 @@ public class Main {
     /** The Constant LIST. */
     private static final String LIST = "list";
 
-    /** The Constant HASHTABLE. */
+    /** The Constant AVLTREE. */
     private static final String AVLTREE = "avltree";
 
-    /** The Constant RBTREE. */
+    /** The Constant BSTTREE. */
     private static final String BSTTREE = "bstree";
 
-    /** The estrutra */
+    /** The estrutra. */
     private static Estrutura estrutura;
 
     /** Memory Usage Checker . */
     private static CalculaMemoUtilizada memoriaUtilizada;
 
+    /** The load total time. */
     private static long loadTotalTime;
 
+    /** The query total time. */
     private static long queryTotalTime;
 
+    /** The write dados. */
     private static DadosAnalisados writeDados;
 
     /**
@@ -60,7 +64,7 @@ public class Main {
 
             while ((word = br.readLine()) != null) {
                 cTime.startTime();
-                result = estrutura.search(word);
+                result = estrutura.search(word.toLowerCase());
                 if (result) {
                     System.out.println(word + " : S");
                 } else {
@@ -106,7 +110,7 @@ public class Main {
 
             while ((word = br.readLine()) != null) {
                 cTime.startTime();
-                estrutura.insert(word);
+                estrutura.insert(word.toLowerCase());
             }
 
             memoriaUtilizada.checkMemoFInal();

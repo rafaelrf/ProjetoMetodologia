@@ -5,29 +5,55 @@ import core.avltree.Estrutura;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BSTImpl.
+ *
+ * @param <K> the key type
+ * @param <V> the value type
+ */
 public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, Estrutura {
 
+    /** The root. */
     protected BSTNode<K, V> root;
 
+    /**
+     * Instantiates a new BST impl.
+     */
     public BSTImpl() {
         root = new BSTNode<K, V>();
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#getRoot()
+     */
     @Override
     public BSTNode<K, V> getRoot() {
         return this.root;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#isEmpty()
+     */
     @Override
     public boolean isEmpty() {
         return root.isEmpty();
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#height()
+     */
     @Override
     public int height() {
         return heightAux(root);
     }
 
+    /**
+     * Height aux.
+     *
+     * @param node the node
+     * @return the int
+     */
     protected int heightAux(BSTNode<K, V> node) {
         int auxLeft = 0, auxRight = 0;
 
@@ -45,6 +71,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#search(java.lang.Comparable)
+     */
     @Override
     public boolean search(K key) {
         BSTNode<K, V> temp = searchAux(key);
@@ -56,6 +85,12 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
 
     }
 
+    /**
+     * Search aux.
+     *
+     * @param key the key
+     * @return the BST node
+     */
     private BSTNode<K, V> searchAux(K key) {
         BSTNode<K, V> aux = root;
 
@@ -70,6 +105,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return aux;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#insert(java.lang.Comparable, java.lang.Object)
+     */
     @Override
     public void insert(K key, V value) {
 
@@ -100,6 +138,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#maximum(core.bst.BSTNode)
+     */
     @Override
     public BSTNode<K, V> maximum(BSTNode<K, V> node) {
         BSTNode<K, V> aux = null;
@@ -112,6 +153,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return aux;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#minimum(core.bst.BSTNode)
+     */
     @Override
     public BSTNode<K, V> minimum(BSTNode<K, V> node) {
         BSTNode<K, V> aux = null;
@@ -124,6 +168,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return aux;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#sucessor(core.bst.BSTNode)
+     */
     @Override
     public BSTNode<K, V> sucessor(BSTNode<K, V> node) {
         BSTNode<K, V> result = null;
@@ -144,6 +191,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return result;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#predecessor(core.bst.BSTNode)
+     */
     @Override
     public BSTNode<K, V> predecessor(BSTNode<K, V> node) {
         BSTNode<K, V> result = null;
@@ -164,6 +214,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return result;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#preOrder()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public K[] preOrder() {
@@ -174,6 +227,12 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return (K[]) result.toArray(comparador);
     }
 
+    /**
+     * Pre order aux.
+     *
+     * @param node the node
+     * @param preOrdenado the pre ordenado
+     */
     private void preOrderAux(BSTNode<K, V> node, ArrayList<K> preOrdenado) {
         if (!node.isEmpty()) {
             preOrdenado.add(node.getKey());
@@ -182,6 +241,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#order()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public K[] order() {
@@ -192,6 +254,12 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return (K[]) result.toArray(comparador);
     }
 
+    /**
+     * Order aux.
+     *
+     * @param newNode the new node
+     * @param ordenado the ordenado
+     */
     private void orderAux(BSTNode<K, V> newNode, ArrayList<K> ordenado) {
         if (!newNode.isEmpty()) {
             orderAux(newNode.getLeft(), ordenado);
@@ -200,6 +268,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#postOrder()
+     */
     @Override
     public K[] postOrder() {
         Comparable[] comparador = new Comparable[size()];
@@ -208,6 +279,12 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return (K[]) result.toArray(comparador);
     }
 
+    /**
+     * Post order aux.
+     *
+     * @param newNode the new node
+     * @param posOrdenado the pos ordenado
+     */
     private void postOrderAux(BSTNode<K, V> newNode, ArrayList<K> posOrdenado) {
         if (!newNode.isEmpty()) {
             postOrderAux(newNode.getLeft(), posOrdenado);
@@ -216,11 +293,20 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#size()
+     */
     @Override
     public int size() {
         return size(root);
     }
 
+    /**
+     * Size.
+     *
+     * @param node the node
+     * @return the int
+     */
     private int size(BSTNode<K, V> node) {
         int result = 0;
         if (!node.isEmpty()) {
@@ -229,12 +315,18 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
         return result;
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BST#remove(java.lang.Comparable)
+     */
     @Override
     public void remove(K key) {
         // TODO Auto-generated method stub
 
     }
 
+    /* (non-Javadoc)
+     * @see core.avltree.Estrutura#insert(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public void insert(String word) {
@@ -242,6 +334,9 @@ public class BSTImpl<K extends Comparable<? super K>, V> implements BST<K, V>, E
 
     }
 
+    /* (non-Javadoc)
+     * @see core.avltree.Estrutura#search(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public boolean search(String word) {

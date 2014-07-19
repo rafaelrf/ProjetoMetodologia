@@ -4,10 +4,23 @@ package core.avltree;
 import core.bst.BSTImpl;
 import core.bst.BSTNode;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AVLTreeImpl.
+ *
+ * @param <K> the key type
+ * @param <V> the value type
+ */
 public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, V> implements
         AVLTree<K, V>, Estrutura {
 
     // AUXILIARY
+    /**
+     * Calculate balance.
+     *
+     * @param node the node
+     * @return the int
+     */
     protected int calculateBalance(BSTNode<K, V> node) {
         if (node != null && !node.isEmpty()) {
             return heightAux(node.getLeft()) - heightAux(node.getRight());
@@ -16,6 +29,11 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
     }
 
     // AUXILIARY
+    /**
+     * Rebalance up.
+     *
+     * @param node the node
+     */
     protected void rebalanceUp(BSTNode<K, V> node) {
         BSTNode<K, V> parent = node.getParent();
         while (parent != null) {
@@ -24,6 +42,11 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
         }
     }
 
+    /**
+     * Rebalance.
+     *
+     * @param node the node
+     */
     protected void rebalance(BSTNode<K, V> node) {
         if (Math.abs(calculateBalance(node)) > 1) {
             int balance = this.calculateBalance(node);
@@ -45,11 +68,21 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BSTImpl#insert(java.lang.Comparable, java.lang.Object)
+     */
     @Override
     public void insert(K key, V value) {
         insertAux(root, key, value);
     }
 
+    /**
+     * Insert aux.
+     *
+     * @param node the node
+     * @param key the key
+     * @param value the value
+     */
     protected void insertAux(BSTNode<K, V> node, K key, V value) {
         if (node.isEmpty()) {
             node.setKey(key);
@@ -70,6 +103,11 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
     }
 
     // AUXILIARY
+    /**
+     * Left rotation.
+     *
+     * @param node the node
+     */
     protected void leftRotation(BSTNode<K, V> node) {
 
         if (node != null && !node.isEmpty()) {
@@ -108,6 +146,11 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
     }
 
     // AUXILIARY
+    /**
+     * Right rotation.
+     *
+     * @param node the node
+     */
     protected void rightRotation(BSTNode<K, V> node) {
 
         if (node != null && !node.isEmpty()) {
@@ -145,6 +188,9 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
         }
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BSTImpl#insert(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public void insert(String word) {
@@ -152,6 +198,9 @@ public class AVLTreeImpl<K extends Comparable<? super K>, V> extends BSTImpl<K, 
         this.insert((K) word, (V) word);
     }
 
+    /* (non-Javadoc)
+     * @see core.bst.BSTImpl#search(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public boolean search(String word) {
